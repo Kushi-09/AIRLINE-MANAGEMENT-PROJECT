@@ -1,0 +1,541 @@
+#include <iostream>
+#include<fstream>
+#include<string.h>
+using namespace std;
+
+class d_booking
+{
+protected:
+    char toja[7],tojd[7];
+    long int doj;
+    int choice,src,dest;
+public:
+    int j_detail() 
+    {
+        cout<<"\nEnter your date of Journey in DDMMYY format."<<endl;
+        cin>>doj;
+        cout<<"Enter the corresponding number to the places to choose your source and destination"<<endl;
+        cout<<"\1.Goa -1 \t\2.Banglore -2 \t\3.Delhi -3 \t\4.Kolkata -4" << endl << endl;
+        cout<<"\tEnter Source"<<endl;
+        cin>>src;
+        cout<<"\tEnter destination"<<endl;
+        cin>>dest;
+        if((src==1 && dest==2)||(src==2 && dest==1))
+        {
+            cout<<"\t \t \tFlights Available"<<endl<<endl;
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"08:00\t\t11:05\t\tRs.5000.50\t\tRefundable -1\n";
+            cout<<"14:00\t\t17:05\t\tRs.5500.25\t\tRefundable -2\n";
+            cout<<"19:00\t\t22:05\t\tRs.6000.75\t\tRefundable -3\n";
+        }
+
+        else if((src==1 && dest==3) || (src==3 && dest==1))
+        {
+            cout<<"\t \t \tFlights Available"<<endl<<endl;
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"08:00\t\t11:05\t\tRs.5000.50\t\tRefundable -1\n";
+            cout<<"14:00\t\t17:05\t\tRs.5500.25\t\tRefundable -2\n";
+            cout<<"19:00\t\t22:05\t\tRs.6000.75\t\tRefundable -3\n";
+        }
+
+        else if((src==1&& dest==4)||(src==4 && dest==1))
+        {
+            cout<<"\t \t \tFlights Available"<<endl<<endl;
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"08:00\t\t11:05\t\tRs.5000.50\t\tRefundable -1\n";
+            cout<<"14:00\t\t17:05\t\tRs.5500.25\t\tRefundable -2\n";
+            cout<<"19:00\t\t22:05\t\tRs.6000.75\t\tRefundable -3\n";
+        }
+
+        else if((src==2 && dest==3)||(src==3 && dest==2))
+        {
+            cout<<"\t \t \tFlights Available"<<endl<<endl;
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"08:00\t\t11:05\t\tRs.5000.50\t\tRefundable -1\n";
+            cout<<"14:00\t\t17:05\t\tRs.5500.25\t\tRefundable -2\n";
+            cout<<"19:00\t\t22:05\t\tRs.6000.75\t\tRefundable -3\n";
+        }
+
+        else if((src==2 && dest==4) || (src==4 && dest==2))
+        {
+            cout<<"\t \t \tFlights Available"<<endl<<endl;
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"08:00\t\t11:05\t\tRs.5000.50\t\tRefundable -1\n";
+            cout<<"14:00\t\t17:05\t\tRs.5500.25\t\tRefundable -2\n";
+            cout<<"19:00\t\t22:05\t\tRs.6000.75\t\tRefundable -3\n";
+        }
+        else if((src==3 && dest==4) || (src==4 && dest==3))
+         {
+            cout<<"\t \t \tFlights Available"<<endl<<endl;
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"08:00\t\t11:05\t\tRs.5000.50\t\tRefundable -1\n";
+            cout<<"14:00\t\t17:05\t\tRs.5500.25\t\tRefundable -2\n";
+            cout<<"19:00\t\t22:05\t\tRs.6000.75\t\tRefundable -3\n";
+        }
+        else if(src==dest)
+        {
+            cout<<"\nSource and destination cannot be same.\nPlease Enter the details again\n\n\n" << endl;
+            return j_detail();
+        }
+        else
+        {
+            cout<<"\nWrong input entered\nPlease Enter valid input\n\n\n" << endl;
+            return j_detail();
+        }
+        return 0;
+
+    }
+
+    int  select_flight() 
+    {   cout<<"\nSelect an Option" << endl;
+        cin>>choice;
+        switch(choice) 
+        {
+          case 1:
+                cout<<"\nFlight selected:"<<endl;
+                cout<<"Departure Time : 08:00"<<endl;
+                cout<<"Arrival Time: 11:05"<<endl;
+                strcpy(tojd,"8:00"); 
+                strcpy(toja,"11:05");
+                break;
+                
+          case 2:
+                cout<<"\nFlight selected:"<<endl;
+                cout<<"Departure Time : 14:00"<<endl;
+                cout<<"Arrival Time: 17:05"<<endl;
+                strcpy(tojd,"14:00");
+                strcpy(toja,"17:05");
+                break;
+          case 3:
+                cout<<"\nFlight selected:" << endl;
+                cout<<"Departure Time : 19:00" << endl;
+                cout<<"Arrival Time: 22:05" << endl;
+                strcpy(tojd,"19:00");
+                strcpy(toja,"22:05");
+                break;
+          default:
+                cout<<"Invalid input entered.\nplease try again" << endl;
+                return select_flight();
+        }
+        return 0;
+           
+        
+        
+    }
+    int sendprice()
+        {
+            return (choice);
+        }
+    friend class payment;
+};
+
+class i_booking
+{
+protected:
+    int pnri;
+    char tojai[7],tojdi[7];
+    long int doji;
+    int srci,desti,choicei;
+public:
+    
+    int j_detaili()
+    {
+        cout<<"\nEnter your date of Journey in DDMMYY format."<<endl;
+        cin>>doji;
+        cout<<"\1.India -1 \2.Qatar -2 \3.Abu Dhabi -3 \4.Singapore -4 \5.London -5 " << endl << endl;
+        cout<<"\tEnter Source" << endl;
+        cin>>srci;
+        cout<<"\nEnter destination" ;
+        cin>>desti;
+        cout<<"\t \t \tFlights Available" << endl << endl;
+
+        if((srci==1 && desti==3)||(srci==3 && desti==1))
+        {
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"10:00\t\t14:05\t\tRs.25000.50\tRefundable -1\n";
+            cout<<"14:00\t\t18:05\t\tRs.21500.25\tRefundable -2\n";
+            cout<<"18:00\t\t22:05\t\tRs.24000.75\tRefundable -3\n";
+        }
+
+        else if((srci==1 && desti==4)||(srci==4 && desti==1))
+        {
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"10:00\t\t14:05\t\tRs.25000.50\tRefundable -1\n";
+            cout<<"14:00\t\t18:05\t\tRs.21500.25\tRefundable -2\n";
+            cout<<"18:00\t\t22:05\t\tRs.24000.75\tRefundable -3\n";
+        }
+
+        else if((srci==1 && desti==5)||(srci==5 || desti==1))
+        {
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"10:00\t\t14:05\t\tRs.25000.50\tRefundable -1\n";
+            cout<<"14:00\t\t18:05\t\tRs.21500.25\tRefundable -2\n";
+            cout<<"18:00\t\t22:05\t\tRs.24000.75\tRefundable -3\n";
+        }
+
+        else if((srci==2 && desti==3)||(srci==3 && desti==2))
+        {
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"10:00\t\t14:05\t\tRs.25000.50\tRefundable -1\n";
+            cout<<"14:00\t\t18:05\t\tRs.21500.25\tRefundable -2\n";
+            cout<<"18:00\t\t22:05\t\tRs.24000.75\tRefundable -3\n";
+        }
+
+        else if((srci==2 && desti==4)||(srci==4 && desti==2))
+        {
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"10:00\t\t14:05\t\tRs.25000.50\tRefundable -1\n";
+            cout<<"14:00\t\t18:05\t\tRs.21500.25\tRefundable -2\n";
+            cout<<"18:00\t\t22:05\t\tRs.24000.75\tRefundable -3\n";        }
+
+        else if((srci==2 && desti==5)||(srci==5 && desti==2))
+        {
+            cout<<"Departure:\tArrival:\tPrice:\t\tCategory:\n";
+            cout<<"10:00\t\t14:05\t\tRs.25000.50\tRefundable -1\n";
+            cout<<"14:00\t\t18:05\t\tRs.21500.25\tRefundable -2\n";
+            cout<<"18:00\t\t22:05\t\tRs.24000.75\tRefundable -3\n";
+
+        }
+        else if(srci==desti)
+        {
+            cout<<"Source and Destination Cannot be same\nPlease try again\n\n\n"<<endl;
+            return j_detaili();
+        }
+        else
+            {
+            cout<<"Invalid input entered.\nPlease try again\n\n\n";
+            return j_detaili();
+        }
+        return 0;
+
+    }
+
+    int select_flighti()
+    {
+        cout<<"\nEnter your choice"<<endl;
+        cin>>choicei;
+        switch(choicei)
+        {
+        case 1:
+            cout<<"\nFlight selected:"<<endl;
+            cout<<"Departure Time: 10:00"<<endl;
+            cout<<"Arrival Time: 14:05"<<endl;
+            strcpy(tojdi,"10:00");
+            strcpy(tojai,"14:05");
+            break;
+        case 2:
+               cout<<"\nFlight selected:"<<endl;
+               cout<<"Departure Time: 14:00"<<endl;
+               cout<<"Arrival Time: 18:05"<<endl;
+               strcpy(tojdi,"14:00");
+                strcpy(tojai,"18:05");
+                break;
+        case 3:
+            cout<<"\nFlight selected:"<<endl;
+            cout<<"Departure Time : 18:00"<<endl;
+            cout<<"Arrival Time: 22:05"<<endl;
+            strcpy(tojdi,"18:00");
+            strcpy(tojai,"22:05");
+            break;
+        default:
+            cout<<"Invalid input entered\n Please try again"<<endl;
+            return select_flighti();
+        }
+        return 0;
+    }
+    int sendiprice()
+    {
+        return (choicei);
+    }
+    friend class payment;
+};
+
+
+class passenger: public d_booking,public i_booking//multiple inheritance
+{
+protected:
+    char f_name[20],l_name[20],email[50];
+    int age,gender;
+    long int c_no;
+public:
+    void p_detail(int x)
+    {   if(x==1)
+        { 
+          j_detail();
+          select_flight();
+          
+        }
+        else
+        {  
+            j_detaili();
+            select_flighti();
+            
+        }
+        cout<<"\n\n\nEnter passenger details as specified below";
+        cout<<"\nFirst Name:";
+        cin>>f_name;
+        cout<<"Last Name:";
+        cin>>l_name;
+    }
+    int gender_check()
+    {
+        cout<<"\nGender:\nFor Male press 1\nFor Female press 2\n";
+        cin>>gender;
+        if(gender>2)
+        {
+            cout << "\n\nInvalid input entered.\nPlease try again\n\n" << endl;
+            return gender_check();
+        }
+        return 0;
+    }
+       void more_details()
+       {
+        cout<<"Age:";
+        cin>>age;
+        cout<<"Email Id:";
+        cin>>email;
+        cout<<"Contact no.(6 digits):";
+        cin>>c_no;
+        cout<<"\n\nDetails Entered:\n";
+        cout<<"Name:"<<f_name<<" "<<l_name<<endl;
+        cout<<"Gender:"<<gender<<endl;      
+        cout<<"Age:"<<age<<endl;
+        cout<<"Email id:"<<email<<endl;
+        cout<<"Contact No.:"<<c_no<<endl;
+    }
+
+     void disp()
+     {
+         cout<<"Name:" << f_name << " " << l_name << endl;
+         cout<<"Date of Journey:" << doj << endl;
+         cout<<"Departure Time:" << tojd << endl;
+         cout<<"Arrival Time:" << toja;
+     }
+
+      void dispi()
+     {
+         cout<<"Name:" << f_name << " " << l_name << endl;
+         cout<<"Date of Journey:" << doji << endl;
+         cout<<"Departure Time:" << tojdi << endl;
+         cout<<"Arrival Time:" << tojai;
+     }
+};
+
+
+
+class payment
+{
+protected:
+    long
+    int choice1,bank,card,date,cvv,user_id;
+    char password[10];
+public:
+    void pay_detail()
+    {     
+        cout << "\n\n\nHow would you like to pay?:\n";
+        cout << "\n\1.Debit Card(1) \n\2.Credit Card(2) \n\3.Net Banking(3)";
+        cout << "\n\nEnter your choice";
+        cin >> choice1;
+        if(choice1==1)
+        choicefunc(2);
+        else if (choice1==2)
+        choicefunc(2,5);
+        else
+        choicefunc('a');
+       
+    }
+     int choicefunc(int n)//function overloading
+        {
+            cout << "\nEnter card no.:";
+            cin >> card;
+            cout << "\nEnter expiry date:";
+            cin >> date;
+            cout << "\nEnter CVV no.:";
+            cin >> cvv;
+            cout << "\nTransaction Successful\n";
+            return 0;
+        }
+        int choicefunc(int n,int m)
+        {
+            cout << "\nEnter card no.:";
+            cin >> card;
+            cout << "\nEnter expiry date:";
+            cin >> date;
+            cout << "\nEnter password:";
+            cin >> password;
+            cout << "\nTransaction Successful\n";
+            return 0;
+        }
+        int choicefunc(char n)
+        {
+            cout << "Banks Available: \1.Bank of Baroda(1) \2.HDFC Bank(2) \3.e Bank Of India(3) \4.Axis Bank(4) \5.Others(5)";
+            cout << "\nSelect your bank:";
+            cin >> bank;
+            cout << "\nYou have selected:" << bank;
+            cout << "\nEnter user id:";
+            cin >> user_id;
+            cout << "\nEnter password:";
+            for(int i=0;i<10;i++)
+			{
+            cin >> password[i];
+            }
+            cout << "\nTransaction Successful\n";
+            return 0;
+        }
+        void choicefunc()
+        {
+            cout << "\nWrong input entered.\nTry again\n\n";
+            return pay_detail();
+        }
+    int luggage(int y)
+    {
+        if (y==1)
+        {
+            
+            int lugwt,lop;
+            float exwt,tp,lugpr;
+            cout<<"The maximum limit of Luggage allowed in the aircraft is 15 kgs\n";
+            cout<<"Press 1 if your luggage weight is below 15kgs \n";
+            cout<<"Press 2 if you want to take more then 15 kgs of luggage \n";
+            cin>>lop;
+            d_booking d1;
+            int pch=d1.sendprice();
+            if (pch=1)
+            tp=5000.50;
+            else if(pch=2)
+            tp=5500.25;
+            else
+            tp=6000.75;
+            
+            if(lop==1)
+            {
+                cout<<"\n\nFinal Price will be "<<tp<<"\n\n\n";
+            }
+             else 
+            {
+                cout<<"Extra weight is allowed to be carried in the aircraft (domestic) at the rate of Rs 250.25 per kg\n";
+                cout<<"Enter the extra weight you want to carry in kgs\n";
+                cin>>exwt;
+                lugpr=exwt*250.25;
+                sendcost(lugpr,tp);
+            }
+        }
+        else
+        {
+            i_booking i1;
+            int lugwti,lopi;
+            float exwti,lugpr,tp;
+            cout<<"\n\n\nThe maximum limit of Luggage allowed in the aircraft is 15 kgs\n\n\n";
+            cout<<"Press 1 if your luggage weight is below 15kgs \n";
+            cout<<"Press 2 if you want to take more then 15 kgs of luggage \n";
+            cin>>lopi;
+            int ich=i1.sendiprice();
+            if(ich=1)
+            tp=25000.50;
+            else if(ich=2)
+            tp=21500.25;
+            else
+            tp=24000.75;
+            if(lopi==1)
+            {
+                cout<<"\n\nFinal Price will be "<<tp<<"\n\n\n";
+            }
+             else 
+            {
+                cout<<"Extra weight is allowed to be carried in the aircraft (international) at the rate of Rs 750.25 per kg\n";
+                cout<<"Enter the extra weight you want to carry in kgs";
+                cin>>exwti;
+                lugpr=exwti*750.25;
+                sendcost(lugpr,tp);
+            }
+        }
+    
+    return 0;
+    }
+    int sendcost(int x,int y)
+    {
+        amount obj1, obj2, result;
+        obj1.setValue(x);
+        obj2.setValue(y);
+
+        result = obj1 + obj2;
+
+        cout << "\n\nThe Extra Luggage Cost Is Rs";
+        obj1.display();
+
+        cout << "\nYour Final Cost will be Rs";
+        result.display();
+        return 0;
+    }
+    class amount //operator overloading
+    {
+        int value;
+        public:
+
+        void setValue(int temp) 
+        {
+        value = temp;
+        }
+
+        amount operator+(amount ob)
+        {
+            amount t;
+            t.value = value + ob.value;
+        return (t);
+        }
+
+        void display()
+        {
+        cout << value << endl;
+        }
+    };
+    
+};
+
+
+int main() 
+{
+
+    class d_booking d1;
+    class i_booking i1;
+    class passenger p1;
+    class payment p2;
+    int ch,ch1,n;
+    char input;
+    do
+    {
+    cout << "\n\n \t\t\t\tWelcome To STAR AIRLINES " << endl << endl;
+    cout <<"\t   \t\t<><><><><><><><><><><><><><><><><><><><><><><>\n";
+    cout << "\t   \t\tEasy Flight Booking Now Possible at your fingertips!" << endl;
+    cout <<"\t   \t\t<><><><><><><><><><><><><><><><><><><><><><><>";
+   
+    cout << "\n\nDomestic Fights(1) \nInternational Flights(2)" << endl;
+              cout << "\nPlease enter your option" << endl;
+              cin >> ch1;
+              switch(ch1)
+              {
+                   case 1:
+                        p1.p_detail(1);
+                        p1.gender_check();
+                        p1.more_details();                        
+                        p2.luggage(1);
+                        p2.pay_detail();
+                        p1.disp();
+                        break;
+                   case 2: 
+                           p1.p_detail(2);
+                           p1.gender_check();
+                           p1.more_details();
+                           p2.luggage(2);                           
+                           p2.pay_detail();
+                           p1.dispi();
+                           break;
+                   default:
+                    cout << "Wrong input entered\nTry again\n\n\n" << endl;
+                    return main();
+              }
+    cout<<"\n\n\nDo you wish to continue? If Yes Press Y " << endl;
+    cin >> input;
+  }while(input=='Y' || input=='y'); 
+return 0;
+}
